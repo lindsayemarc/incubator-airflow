@@ -34,7 +34,7 @@ from airflow import configuration
 
 from raven.contrib.flask import Sentry
 
-sentry = Sentry(dsn=os.environ('SENTRY_DSN'))
+sentry = Sentry(dsn=os.environ['SENTRY_DSN'])
 
 def create_app(config=None, testing=False):
     app = Flask(__name__)
