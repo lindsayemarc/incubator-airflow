@@ -131,7 +131,8 @@ class EpantryAuthBackend(object):
             epantry_token = {
                 'access_token': resp['access_token']
             }
-            epantry_user = self.epantry_oauth.get('api/customer/', token=epantry_token).data
+            epantry_session = self.epantry_oauth.get('api/session/', token=epantry_token).data
+            epantry_user = self.epantry_oauth.get('api/customer/%s' % epantry_session['relationships']['customer']['data']['id'], token=epantry_token).data
             print epantry_user
             username = epantry_user.get('full_name')
             email = epantry_user.get('email')
